@@ -6,13 +6,13 @@ import activitiesRouter from './routes/activities.js';
 import leaderboardRouter from './routes/leaderboard.js';
 import workoutsRouter from './routes/workouts.js';
 const app = express();
-const port = Number(process.env.PORT) || 8000;
+const port = 8000;
 const host = '0.0.0.0';
 const getApiBaseUrl = () => {
     const codespaceName = process.env.CODESPACE_NAME;
     return codespaceName
-        ? `https://${codespaceName}-${port}.app.github.dev`
-        : `http://localhost:${port}`;
+        ? `https://${codespaceName}-8000.app.github.dev`
+        : 'http://localhost:8000';
 };
 // Middleware
 app.use(express.json());
