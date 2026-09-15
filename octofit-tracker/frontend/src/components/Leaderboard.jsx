@@ -1,7 +1,7 @@
 import { useCollection } from '../useCollection.js'
 
 function Leaderboard() {
-  const { items: leaders, status } = useCollection('leaderboard')
+  const { items: leaders, status } = useCollection('/api/leaderboard/')
 
   if (status === 'loading') return <p className="status">Loading leaderboard...</p>
   if (status === 'error') return <p className="status status-error">Unable to load leaderboard.</p>

@@ -1,7 +1,7 @@
 import { useCollection } from '../useCollection.js'
 
 function Users() {
-  const { items: users, status } = useCollection('users')
+  const { items: users, status } = useCollection('/api/users/')
 
   if (status === 'loading') return <p className="status">Loading users...</p>
   if (status === 'error') return <p className="status status-error">Unable to load users.</p>

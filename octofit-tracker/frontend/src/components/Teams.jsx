@@ -1,7 +1,7 @@
 import { useCollection } from '../useCollection.js'
 
 function Teams() {
-  const { items: teams, status } = useCollection('teams')
+  const { items: teams, status } = useCollection('/api/teams/')
 
   if (status === 'loading') return <p className="status">Loading teams...</p>
   if (status === 'error') return <p className="status status-error">Unable to load teams.</p>

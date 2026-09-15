@@ -1,7 +1,7 @@
 import { useCollection } from '../useCollection.js'
 
 function Workouts() {
-  const { items: workouts, status } = useCollection('workouts')
+  const { items: workouts, status } = useCollection('/api/workouts/')
 
   if (status === 'loading') return <p className="status">Loading workouts...</p>
   if (status === 'error') return <p className="status status-error">Unable to load workouts.</p>
