@@ -1,0 +1,18 @@
+:root {
+  --ink: #17211c;
+  --muted: #667069;
+  --paper: #f7f8f3;
+  --line: #dce0d8;
+  --green: #14734a;
+  --coral: #e6573f;
+  --body: 'Trebuchet MS', sans-serif;
+  --display: Georgia, 'Times New Roman', serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+* { box-sizing: border-box; }
+body { min-width: 320px; min-height: 100vh; margin: 0; background-color: var(--paper); background-image: linear-gradient(rgba(23, 33, 28, .025) 1px, transparent 1px); background-size: 100% 28px; }
+button, input, select, textarea { font: inherit; }
