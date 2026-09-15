@@ -1,7 +1,7 @@
 import { useCollection } from '../useCollection.js'
 
 function Activities() {
-  const { items: activities, status } = useCollection('activities')
+  const { items: activities, status } = useCollection('/api/activities/')
 
   if (status === 'loading') return <p className="status">Loading activities...</p>
   if (status === 'error') return <p className="status status-error">Unable to load activities.</p>
