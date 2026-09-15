@@ -4,6 +4,7 @@ model: GPT-5.5
 description: 'Create the Node.js logic tier for the Octofit multi-tier application'
 ---
 
+
 Create the logic tier in `octofit-tracker/backend` for the Octofit Tracker multi-tier application.
 
 Requirements:
