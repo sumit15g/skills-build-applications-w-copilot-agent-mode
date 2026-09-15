@@ -1,7 +1,12 @@
 import { useCollection } from '../useCollection.js'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+const teamsEndpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/'
+
 function Teams() {
-  const { items: teams, status } = useCollection('/api/teams/')
+  const { items: teams, status } = useCollection(teamsEndpoint)
 
   if (status === 'loading') return <p className="status">Loading teams...</p>
   if (status === 'error') return <p className="status status-error">Unable to load teams.</p>

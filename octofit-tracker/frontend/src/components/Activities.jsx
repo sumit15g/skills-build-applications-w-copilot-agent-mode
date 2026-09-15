@@ -1,7 +1,12 @@
 import { useCollection } from '../useCollection.js'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+const activitiesEndpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/activities/`
+  : 'http://localhost:8000/api/activities/'
+
 function Activities() {
-  const { items: activities, status } = useCollection('/api/activities/')
+  const { items: activities, status } = useCollection(activitiesEndpoint)
 
   if (status === 'loading') return <p className="status">Loading activities...</p>
   if (status === 'error') return <p className="status status-error">Unable to load activities.</p>

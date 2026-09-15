@@ -1,7 +1,12 @@
 import { useCollection } from '../useCollection.js'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+const workoutsEndpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/'
+
 function Workouts() {
-  const { items: workouts, status } = useCollection('/api/workouts/')
+  const { items: workouts, status } = useCollection(workoutsEndpoint)
 
   if (status === 'loading') return <p className="status">Loading workouts...</p>
   if (status === 'error') return <p className="status status-error">Unable to load workouts.</p>

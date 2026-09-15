@@ -1,7 +1,12 @@
 import { useCollection } from '../useCollection.js'
 
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+const leaderboardEndpoint = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/leaderboard/`
+  : 'http://localhost:8000/api/leaderboard/'
+
 function Leaderboard() {
-  const { items: leaders, status } = useCollection('/api/leaderboard/')
+  const { items: leaders, status } = useCollection(leaderboardEndpoint)
 
   if (status === 'loading') return <p className="status">Loading leaderboard...</p>
   if (status === 'error') return <p className="status status-error">Unable to load leaderboard.</p>

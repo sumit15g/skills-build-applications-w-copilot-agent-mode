@@ -12,9 +12,11 @@ export function normalizeCollection(payload) {
 }
 
 export async function fetchCollection(resource, signal) {
-  const endpoint = resource.startsWith('/api/')
-    ? `${API_BASE_URL.replace(/\/api$/, '')}${resource}`
-    : `${API_BASE_URL}/${resource}/`
+  const endpoint = resource.startsWith('http')
+    ? resource
+    : resource.startsWith('/api/')
+      ? `${API_BASE_URL.replace(/\/api$/, '')}${resource}`
+      : `${API_BASE_URL}/${resource}/`
   const response = await fetch(endpoint, { signal })
 
   if (!response.ok) {
