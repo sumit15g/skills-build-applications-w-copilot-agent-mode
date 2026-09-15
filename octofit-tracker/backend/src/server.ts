@@ -8,6 +8,14 @@ import workoutsRouter from './routes/workouts.js';
 
 const app = express();
 const port = Number(process.env.PORT) || 8000;
+const host = '0.0.0.0';
+
+const getApiBaseUrl = () => {
+  const codespaceName = process.env.CODESPACE_NAME;
+  return codespaceName
+    ? `https://${codespaceName}-${port}.app.github.dev`
+    : `http://localhost:${port}`;
+};
 
 // Middleware
 app.use(express.json());
@@ -47,7 +55,7 @@ app.get('/api/health', (_request, response) => {
   response.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    apiUrl: getCorsOrigin(),
+    apiUrl: getApiBaseUrl(),
   });
 });
 
@@ -73,8 +81,8 @@ app.use((error: any, _request: express.Request, response: express.Response) => {
 async function startServer() {
   try {
     await connectDatabase();
-    app.listen(port, () => {
-      console.log(`OctoFit API listening on port ${port}`);
+    app.listen(port, host, () => {
+      console.log(`OctoFit API listening at ${getApiBaseUrl()}`);
       console.log(`Frontend URL: ${getCorsOrigin()}`);
       if (process.env.CODESPACE_NAME) {
         console.log(`Running in Codespace: ${process.env.CODESPACE_NAME}`);
